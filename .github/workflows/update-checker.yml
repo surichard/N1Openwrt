@@ -46,14 +46,14 @@ jobs:
       if: env.MULTIPLE_BUILD == 'true' && (steps.cacheHash.outputs.cache-hit != 'true' || (github.event.inputs.update == 'true' && github.event.inputs.update  != 'false'))
       uses: peter-evans/repository-dispatch@v1
       with:
-        token: ${{ secrets.RELEASES_TOKEN  }}
+        token: ${{ secrets.RELEASES_TOKEN }}
         event-type: multiple
         
     - name: Trigger single build
       if: env.MULTIPLE_BUILD != 'true' && (steps.cacheHash.outputs.cache-hit != 'true' || (github.event.inputs.update == 'true' && github.event.inputs.update  != 'false')) 
       uses: peter-evans/repository-dispatch@v1
       with:
-        token: ${{ secrets.RELEASES_TOKEN  }}
+        token: ${{ secrets.RELEASES_TOKEN }}
         event-type: single
         
     - name: Delete workflow runs
